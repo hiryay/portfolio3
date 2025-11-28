@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hira's Portfolio - Work Experience</title>
+
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        body {
+            margin: 0;
+            background: #F7F7F7; /* lightest gray */
+            font-family: "Lora", serif;
+        }
+
+        .navbar {
+            background: #BDBDBD; /* match home.html */
+            width: 100%;
+            padding: 20px 12px;
+            height: 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-sizing: border-box;
+        }
+
+        .links {
+            display: flex;
+            margin-right: 40px;
+        }
+        .links a {
+            display: flex;
+            align-items: center;
+            color: #303030; /* dark for contrast */
+            padding: 20px 25px;
+            text-decoration: none;
+        }
+        .links a:hover {
+            background: #C8C8C8;
+            color: #0D0D0D;
+            transition: 0.3s;
+        }
+        .links a:focus {
+            text-decoration: underline;
+            text-underline-offset: 4px;
+            outline: 2px solid rgba(0,0,0,0.1);
+            outline-offset: 2px;
+        }
+
+        .logo {
+            margin-left: 40px;
+        }
+
+        .logo h1 {
+            font-size: 20px;
+            color: #303030; /* dark logo color to match new navbar */
+        }
+
+        .skills-header,
+        h2 {
+            padding-left: 90px;
+            color: #303030;
+            font-weight: 700;
+        }
+
+        .skills-header {
+            margin: 30px 0 20px;
+            font-size: 28px;
+        }
+
+        .skills-container {
+            display: flex;
+            gap: 40px;
+            padding: 0 90px;
+        }
+
+        .skills {
+            flex: 1;
+            background: #fff;
+            padding: 20px 22px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+            border-radius: 6px;
+        }
+
+        .skills h3 {
+            margin-bottom: 12px;
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .soft-list {
+            list-style: none;
+            padding: 0;
+            font-size: 16px;
+            color: #303030;
+        }
+
+        .soft-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px dashed #efefef;
+        }
+
+        .stars i {
+            color: #f5c518;
+            margin-right: 2px;
+        }
+
+        .gallery {
+            padding: 0 90px;
+            display: grid;
+            grid-template-columns: repeat(4, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .gallery-item {
+            background: #fff;
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            cursor: pointer;
+        }
+
+        .gallery-item p {
+            padding: 15px;
+            margin: 0;
+            font-size: 16px;
+            text-align: center;
+            color: #303030;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            transform: scale(0.95);
+            opacity: 0;
+            transition: 0.18s;
+        }
+
+        .modal.active .modal-content {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        .modal-content img {
+            width: 100%;
+            max-height: 90vh;
+            object-fit: contain;
+        }
+
+        .footer {
+            background: #BDBDBD; 
+            color: #303030; 
+            padding: 50px 40px;
+            margin-top: 80px;
+        }
+        .footer_container {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+        .footer_section {
+            text-align: center;
+            flex: 1;
+        }
+        .footer_section h3 {
+            color: #303030;
+            margin-bottom: 12px;
+        }
+        .footer_section a {
+            color: #303030;
+            text-decoration: none;
+            margin: 6px 0;
+            display: block;
+        }
+        .footer_section a:hover { color: #0D0D0D; text-decoration: underline; }
+        .socials a {
+            color: #303030;
+            margin-right: 15px;
+            font-size: 20px;
+        }
+        .socials a:hover { color: #0D0D0D; }
+        .footer_bottom {
+            text-align: center;
+            margin-top: 35px;
+            padding-top: 15px;
+            border-top: 1px solid #525252;
+            font-size: 14px;
+            color: #000;
+        }
+        @media (max-width: 800px) { .footer_container { flex-direction: column;} }
+
+        @media (max-width: 800px) {
+            .gallery {
+                grid-template-columns: 1fr;
+                padding: 0 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="navbar">
+        <div class="links">
+            <a href="home.html">HOME</a>
+            <a href="home.html#aboutme">ABOUT ME</a>
+            <a href="index.html">WORK EXPERIENCE</a>
+            <a href="home.html#contact">CONTACT</a>
+        </div>
+    </div>
+
+    <h2 style="margin-top: 40px; margin-bottom: 30px; font-size: 28px;">My Work</h2>
+
+    <div class="gallery">
+        <div class="gallery-item">
+            <img src="images/POSTER.png" onclick="openModal(this.src)">
+            <p>Poster Design</p>
+        </div>
+
+        <div class="gallery-item">
+            <img src="images/pic2.png" onclick="openModal(this.src)">
+            <p>Poster Design 2</p>
+        </div>
+
+        <div class="gallery-item">
+            <img src="images/pic3.png" onclick="openModal(this.src)">
+            <p>Poster Design 3</p>
+        </div>
+
+        <div class="gallery-item">
+            <img src="images/pic5.png" onclick="openModal(this.src)">
+            <p>Pic 4</p>
+        </div>
+
+        <div class="gallery-item">
+            <img src="images/pic4.png" onclick="openModal(this.src)">
+            <p>Pic 5</p>
+        </div>
+
+        <div class="gallery-item">
+            <img src="images/pic6.png" onclick="openModal(this.src)">
+            <p>Pic 6</p>
+        </div>
+
+        <div class="gallery-item">
+            <img src="images/pic7.png" onclick="openModal(this.src)">
+            <p>Pic 7</p>
+        </div>
+
+        <div class="gallery-item">
+            <img src="images/pic8.jpg" onclick="openModal(this.src)">
+            <p>Pic 8</p>
+        </div>
+    </div>
+
+    <div id="imageModal" class="modal" onclick="closeModal()">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <img id="modalImage">
+        </div>
+    </div>
+
+    <h2 class="skills-header">My Skills</h2>
+    <div class="skills-container">
+        <div class="skills">
+            <h3>Soft Skills</h3>
+            <ul class="soft-list">
+                <li>Communication <span class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i></span></li>
+                <li>Teamwork <span class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i></span></li>
+                <li>Problem Solving <span class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i></span></li>
+                <li>Creativity <span class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span></li>
+                <li>Time Management <span class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i></span></li>
+                <li>Adaptability <span class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i></span></li>
+                <li>Empathy <span class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i></span></li>
+            </ul>
+        </div>
+        <div class="skills">
+            <h3>Drawing Tools</h3>
+            <ul class="soft-list">
+                <li>Adobe Photoshop <span class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i></span></li>
+                <li>Adobe Illustrator <span class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i></span></li>
+                <li>Figma <span class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i></span></li>
+                <li>CorelDRAW <span class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i></span></li>
+                <li>Procreate <span class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i></span></li>
+                <li>Canva <span class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i></span></li>
+                <li>Sketch <span class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i></span></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="work_experience" style="margin-top: 48px; padding-left: 90px;">
+        <h2>Work Experience</h2>
+        <ul>
+            <li>Fashion Designer at XYZ Studio (2023-2024)</li>
+            <li>Internship at ABC Brand (2022)</li>
+            <li>Freelance Projects (2021-Present)</li>
+            <li>Kinnaird Rang, Riwayat aur Roshnai decoration</li>
+            <li>Junior graphic designer award</li>
+        </ul>
+    </div>
+</div>
+    <footer class="footer" id="contact">
+        <div class="footer_container">
+            <div class="footer_section">
+                <h3>Quick Links</h3>
+                <a href="home.html">Home</a>
+                <a href="home.html#aboutme">About Me</a>
+                <a href="index.html">Work Experience</a>
+                <a href="home.html#contact">Contact</a>
+            </div>
+            <div class="footer_section">
+                <h3>Contact</h3>
+                <p>Email: Hira@example.com</p>
+                <p>Location: Lahore, Pakistan</p>
+                <p><i class="fa-solid fa-phone"></i> 031444444449</p>
+                <p><i class="fa-brands fa-whatsapp"></i> 031444444449</p>
+            </div>
+            <div class="footer_section">
+                <h3>Follow Me</h3>
+                <div class="socials">
+                    <a href="https://www.instagram.com/hirae.y" target="_blank">
+                        <i class="fa-brands fa-instagram"></i> @hirae.y
+                    </a>
+                    <a href="#"><i class="fa-brands fa-dribbble"></i></a>
+                    <a href="#"><i class="fa-brands fa-behance"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer_bottom">
+            <p>© 2025 Hira Ejaz — All Rights Reserved.</p>
+        </div>
+    </footer>
+    <script>
+        function openModal(src) {
+            document.getElementById('modalImage').src = src;
+            document.getElementById('imageModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('imageModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+            setTimeout(() => {
+                document.getElementById('modalImage').src = '';
+            }, 200);
+        }
+
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') closeModal();
+        });
+    </script>
+
+</body>
+</html>
